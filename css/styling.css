@@ -1,0 +1,17 @@
+body, body * {
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper {
+	min-width: 920px;
+	max-width: 1200px;
+	margin: 0 auto;
+	background: gray;
+	  filter: blur(15px);
+  -webkit-filter: blur(15px);
+}
+
+.container {
+	background: black;
+}
