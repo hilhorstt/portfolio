@@ -51,7 +51,7 @@ body, body * {
 
 h1, h2, h3, h4 {
   font-family: "ostrich-black";
-  font-size: 2em;
+  font-size: 2rem;
   color: #fff; }
 
 div, p, ul, li {
@@ -64,11 +64,14 @@ section {
   margin: 0 auto; }
 
 .menu {
-  height: auto;
   width: 100%;
   position: absolute;
   top: 0;
-  background: url("images/menu.jpg") no-repeat right center #fff; }
+  background: url("images/menu.jpg") no-repeat right bottom #fff;
+  padding-bottom: 4em;
+  border-bottom: 1px solid #000; }
+  .menu:hover {
+    border-bottom: 5px solid #000; }
 
 .wrapper {
   /*	position: relative;
@@ -77,42 +80,35 @@ section {
   	height: 100%;
   	margin: 0 auto;*/ }
 
-nav {
-  border-bottom: 1px solid #000;
-  transition: all .5s linear 0; }
-  nav:hover {
-    border-bottom: 5px solid #000;
-    transition: all .5s linear 0; }
-  nav ul {
-    list-style: none; }
-    nav ul li {
-      display: inline-block;
-      margin: 0 0 0 -5px;
-      padding: 0 20px;
-      height: 65px;
+nav ul {
+  list-style: none; }
+  nav ul li {
+    display: inline-block;
+    margin: 0 0 0 -5px;
+    height: 3em;
+    width: 100%;
+    margin-left: 20px; }
+    nav ul li .menu-link {
+      position: relative;
+      top: .6rem;
+      display: block;
+      font-size: 1.3rem;
       width: 100%;
-      margin-left: 20px; }
-      nav ul li .menu-link {
-        position: relative;
-        top: .6em;
-        display: block;
-        font-size: 1.3em;
-        width: 100%;
-        color: #000;
-        text-decoration: none;
-        transition: all .6s linear .5s; }
-      nav ul li .menu-link--subtitle {
-        opacity: 0;
-        position: relative;
-        top: .4em;
-        transition: all .5s linear 0s;
-        color: #FF931E; }
-      nav ul li:hover .menu-link {
-        top: .2em;
-        transition: all .3s linear 0s; }
-      nav ul li:hover .menu-link--subtitle {
-        opacity: 1;
-        transition: all .5s linear 0.3s; }
+      color: #000;
+      text-decoration: none;
+      transition: all .6s linear .5s; }
+    nav ul li .menu-link--subtitle {
+      opacity: 0;
+      position: relative;
+      top: .1rem;
+      transition: all .5s linear 0s;
+      color: #FF931E; }
+    nav ul li:hover .menu-link {
+      top: .2rem;
+      transition: all .3s linear 0s; }
+    nav ul li:hover .menu-link--subtitle {
+      opacity: 1;
+      transition: all .5s linear 0.3s; }
 
 .content {
   width: 100%;
@@ -127,12 +123,15 @@ nav {
     .content div img {
       border: 0; }
 
-@media screen and (min-width: 550px) and (max-width: 1024px) {
+@media screen and (min-width: 550px) {
   .menu {
-    font-size: 1em;
-    height: 65px; }
+    background-position: right top;
+    padding-top: 7em;
+    padding-bottom: 2em;
+    font-size: .5rem; }
     .menu nav ul li {
-      width: auto; }
+      width: 30%;
+      padding: 0 20px; }
       .menu nav ul li:first-child {
         margin-left: 20px; }
 
@@ -141,7 +140,12 @@ nav {
     background-size: cover; } }
 @media screen and (min-width: 1025px) {
   .menu {
-    font-size: 1.5em; }
+    background-position: right center;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: .8rem; }
+    .menu nav ul li {
+      width: auto; }
 
   .blocks {
     float: left;
@@ -163,7 +167,7 @@ nav {
     .blocks.width-1 {
       width: calc(25% - 40px); }
       .blocks.width-1 h2 {
-        font-size: 3.5em;
+        font-size: 3.5rem;
         text-shadow: 0px 0px 3px #515151; }
       .blocks.width-1:hover {
         -webkit-perspective: 600; }
@@ -189,11 +193,11 @@ nav {
           text-shadow: 0px 0px 20px #000;
           transition: text-shadow 1s ease-in-out; }
       .blocks.header h1 {
-        font-size: 16em;
-        line-height: .7em;
-        margin-top: .1em; }
+        font-size: 16rem;
+        line-height: .7rem;
+        margin-top: .1rem; }
       .blocks.header h2 {
-        font-size: 6em;
+        font-size: 6rem;
         font-family: "ostrich-regular"; } }
 
 /*# sourceMappingURL=styling.css.map */

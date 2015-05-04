@@ -54,7 +54,7 @@ body, body * {
 
 h1, h2, h3, h4 {
 	font-family: "ostrich-black";
-	font-size: 2em;
+	font-size: 2rem;
 	color: #fff;
 }
 
@@ -70,11 +70,15 @@ section {
 }
 
 .menu {
-	height: auto;
 	width: 100%;
 	position: absolute;
 	top: 0;
-	background: url('images/menu.jpg') no-repeat right center #fff; 
+	background: url('images/menu.jpg') no-repeat right bottom #fff; 
+	padding-bottom: 4em;
+	border-bottom: 1px solid #000;
+	&:hover {
+		border-bottom: 5px solid #000;
+	}
 }
 
 .wrapper {
@@ -86,26 +90,19 @@ section {
 }
 		
 nav {
-	border-bottom: 1px solid #000;
-	transition: all .5s linear 0;
-	&:hover {
-		border-bottom: 5px solid #000;
-		transition: all .5s linear 0;
-	}
 	ul {
 		list-style: none;
 		li {
 			display: inline-block;
 			margin: 0 0 0 -5px;
-			padding: 0 20px;
-			height: 65px;
+			height: 3em;
 			width: 100%;
 			margin-left: 20px;
 			.menu-link {
 				position: relative;
-				top: .6em;
+				top: .6rem;
 				display: block;
-				font-size: 1.3em;
+				font-size: 1.3rem;
 				width: 100%;
 				color: #000;
 				text-decoration: none;
@@ -114,13 +111,13 @@ nav {
 			.menu-link--subtitle {
 				opacity: 0;
 				position: relative;
-				top: .4em;
+				top: .1rem;
 				transition: all .5s linear 0s;
 				color: #FF931E;
 			}
 			&:hover {
 				.menu-link {
-					top: .2em;
+					top: .2rem;
 					transition: all .3s linear 0s;
 				}
 				.menu-link--subtitle {
@@ -148,12 +145,15 @@ nav {
 	}
 }
 
-@media screen and (min-width: 550px) and (max-width: 1024px) {
+@media screen and (min-width: 550px) {
 	.menu {
-		font-size: 1em;
-		height: 65px;
+		background-position: right top;
+		padding-top: 7em;
+		padding-bottom: 2em;
+		font-size: .5rem;
 		nav ul li {
-			width: auto;
+			width: 30%;
+			padding: 0 20px;
 			&:first-child {
 				margin-left: 20px;
 			}
@@ -167,7 +167,13 @@ nav {
 
 @media screen and (min-width: 1025px) {
 	.menu {
-		font-size: 1.5em;
+		background-position: right center;
+		padding-top: 0; 
+		padding-bottom: 0;
+		font-size: .8rem;
+		nav ul li {
+			width: auto;
+		}
 	}
 	.blocks {
 		float: left;
@@ -193,7 +199,7 @@ nav {
 		&.width-1 {
 			width: calc(25% - 40px);
 			h2 {
-				font-size: 3.5em;
+				font-size: 3.5rem;
 				text-shadow: 0px 0px 3px #515151;
 			}
 			&:hover {
@@ -227,12 +233,12 @@ nav {
 				}
 			}
 			h1 {
-				font-size: 16em;
-				line-height: .7em;
-				margin-top: .1em;
+				font-size: 16rem;
+				line-height: .7rem;
+				margin-top: .1rem;
 			}
 			h2 {
-				font-size: 6em;
+				font-size: 6rem;
 				font-family: "ostrich-regular";
 			}
 		}
