@@ -14,6 +14,10 @@ module.exports = function(grunt) {
       css: {
         files: 'sass/*.scss',
         tasks: ['sass', 'uglify']
+      }, 
+      js: {
+        files: 'javascript/portfolio.js',
+        tasks: 'jshint'
       }
     },
     uglify: {
@@ -33,6 +37,14 @@ module.exports = function(grunt) {
           'dest/output.css': ['css/styling.css']
         }
       }
+    },
+    jshint: {
+      files: ['Gruntfile.js', 'javascript/portfolio.js'],
+      options: {
+        globals: {
+          angular: true
+        }
+      }
     }
   });
 
@@ -40,6 +52,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   
   // Default task(s).
   grunt.registerTask('live', ['watch']);
