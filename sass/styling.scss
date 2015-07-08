@@ -226,9 +226,11 @@ section {
 			font-size: 1.5em;
 			padding: 3em;
 			text-align: center;
-			&.writer {
-				font-size: 1.2em;
-				color: #eee;
+			margin: 0 auto;
+			max-width: 1000px;
+			.writer {
+				font-size: .8em;
+				color: #ccc;
 			}
 		}
 	}
@@ -250,7 +252,7 @@ section {
 			text-align: center;
 			a {
 				position: relative;
-				top: 1.2em;
+				top: 1.5em;
 				padding: 0em;
 				text-decoration: none;
 				line-height: .8em;
@@ -270,16 +272,33 @@ section {
 			padding: 3em;
 			text-align: center;
 			padding-top: 4.5em;
-			&.writer {
-				font-size: 1.2em;
+			margin: 0 auto;
+			max-width: 1000px;
+			.writer {
+				font-size: .8em;
 				color: #eee;
 			}
 		}		
 	}
 }
 .work-experience {
-	height: auto;
 	font-size: .9em;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffa84c+0,ffcbcb+100 */
+background: #ffa84c; /* Old browsers */
+background: -moz-linear-gradient(45deg,  #ffa84c 0%, #ffcbcb 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#ffa84c), color-stop(100%,#ffcbcb)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg,  #ffa84c 0%,#ffcbcb 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg,  #ffa84c 0%,#ffcbcb 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg,  #ffa84c 0%,#ffcbcb 100%); /* IE10+ */
+background: linear-gradient(45deg,  #ffa84c 0%,#ffcbcb 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa84c', endColorstr='#ffcbcb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	.temp-table {
+		display: block;
+		height:100%;
+		background: url('images/work-experience.svg') no-repeat;
+		background-size: auto 100%;
+		background-position: top center;
+	}
 	.work-exp-table {
 		display: table;
   		width: 100%;
@@ -337,7 +356,8 @@ section {
   	p {
   		font-size: 1.5em;
   		text-align: center;
-  		margin-bottom: 1em;
+  		margin: 0 auto 1em;
+  		max-width: 1000px;
   	}
   	.image {
 		display: block;
