@@ -34,10 +34,10 @@
   /* Prevent first frame from flickering when animation starts */
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both; }
-  .spinner > div .bounce1 {
+  .spinner > div.bounce1 {
     -webkit-animation-delay: -0.32s;
     animation-delay: -0.32s; }
-  .spinner > div .bounce2 {
+  .spinner > div.bounce2 {
     -webkit-animation-delay: -0.16s;
     animation-delay: -0.16s; }
 
@@ -192,8 +192,8 @@ section {
   .testimonials .top {
     height: 50%; }
     .testimonials .top p {
-      font-size: 1.5em;
-      padding: 3em;
+      font-size: 1.2em;
+      padding: 3.5em 3em;
       text-align: center;
       margin: 0 auto;
       max-width: 1000px; }
@@ -231,8 +231,8 @@ section {
         transition: all .2s ease-in-out; }
     .testimonials .bottom p {
       color: #fff;
-      font-size: 1.5em;
-      padding: 3em;
+      font-size: 1.2em;
+      padding: 3.5em 3em;
       text-align: center;
       padding-top: 4.5em;
       margin: 0 auto;
