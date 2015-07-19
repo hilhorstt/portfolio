@@ -310,7 +310,7 @@ section {
     margin: 1em;
     color: #5F7C8A; }
   .aboutme p {
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-align: center;
     margin: 0 auto 1em;
     max-width: 1000px; }
@@ -354,7 +354,7 @@ section {
       text-align: center;
       font-size: 3em;
       font-family: "Roboto-Thin";
-      margin-bottom: 2em; }
+      margin: 0em 1em 1em; }
     .contact .content .block-container {
       margin: 0 auto;
       width: 590px; }
