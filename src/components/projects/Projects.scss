@@ -1,0 +1,64 @@
+.projects {
+  font-size: 0.8rem;
+}
+:global(.project-enter) {
+  opacity: 0.01;
+  transform: translate(0, 30px);
+}
+
+:global(.project-enter.project-enter-active) {
+  opacity: 1;
+  transition: all 500ms ease-in;
+  transform: translate(0, 0);
+}
+
+:global(.project-leave) {
+  opacity: 1;
+}
+
+:global(.project-leave.project-leave-active) {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.project {
+  background: rgba(255,255,255,0.4);
+  margin: 1em;
+  font-size: 1rem;
+  font-weight: 100;
+  :global(.header) {
+    display: flex;
+    background: rgba(255,255,255,0.4);
+    :global(.title), :global(.date) {
+      padding: 1em;
+      align-self: center;
+    }
+    :global(.title) {
+      flex: 1;
+    }
+  }
+  :global(.body) {
+    padding: 1em;
+  }
+  h4 {
+    margin: 0;
+    font-weight: 400;
+  }
+  sub {
+    font-weight: 500;
+  }
+  p {
+    line-height: 1.5em;
+    margin: 0;
+    font-weight: 300;
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .project {
+    p {
+      font-size: 1em;
+    }
+  }
+}

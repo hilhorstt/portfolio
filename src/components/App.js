@@ -3,37 +3,43 @@ import Parallax from 'react-springy-parallax';
 import Typist from 'react-typist';
 import Waypoint from 'react-waypoint';
 import AboutMe from './aboutme/AboutMe';
+import Projects from './projects/Projects';
 import styles from './App.scss';
 
 const App = React.createClass({
     getInitialState() {
         return {
-            isInView: false,
+            amountInView: 0,
         };
     },
     _handleWaypointEnter() {
+        const amountOfProjects = 4;
+        const self = this;
+        for (let index = 0; index < amountOfProjects; index += 1) {
+            const timeout = 1000 * index;
+            self.incrementNumberWithTimeOut(index, timeout);
+        }
+    },
+    incrementNumberWithTimeOut(index, timeout) {
         setTimeout(() => {
-            this.setState({ isInView: true });
-        }, 500);
+            this.setState({ amountInView: index + 1 });
+        }, timeout);
     },
     _handleWaypointLeave() {
-        this.setState({ isInView: false });
+        this.setState({ amountInView: 0 });
     },
     render() {
         const cursorOptions = {
             show: false,
         };
         return (
-            <Parallax ref="parallax" pages={3}>
+            <Parallax pages={3}>
                 <Parallax.Layer offset={0} speed={1} className={styles.front} />
                 <Parallax.Layer offset={1} speed={1} className={styles.endorsement} />
                 <Parallax.Layer offset={2} speed={1} className={styles.contact} />
+
                 <Parallax.Layer
-                    // Page offset, or where the layer will be at when scrolled to
-                    // 0 means start, 1 second page, 1.5 second and half, and so on ...
                     offset={0}
-                    // Parallax factor, allows for positive and negative values
-                    // Shifts the layer up or down in accordance to its offset
                     speed={0.15}
                     className={styles.layer}
                 >
@@ -56,15 +62,16 @@ const App = React.createClass({
                                 I design and build front-end applications.
                             </Typist>
                         </div>
-                        <div className={styles.logo} />
                     </div>
                 </Parallax.Layer>
                 <Parallax.Layer
-                    // Page offset, or where the layer will be at when scrolled to
-                    // 0 means start, 1 second page, 1.5 second and half, and so on ...
+                    offset={0.99}
+                    speed={1.2}
+                >
+                    <div className={styles.logo} />
+                </Parallax.Layer>
+                <Parallax.Layer
                     offset={1}
-                    // Parallax factor, allows for positive and negative values
-                    // Shifts the layer up or down in accordance to its offset
                     speed={1}
                     className={styles.projectPane}
                 >
@@ -74,39 +81,22 @@ const App = React.createClass({
                     <div className={styles.right}>
                         <Waypoint
                             onEnter={this._handleWaypointEnter}
-                            onLeave={this._handleWaypointLeave}>
-                            {
-                                this.state.isInView ? (
-                                    <div>
-                                        <div className={styles.project}>
-                                            Project 1
-                                        </div>
-                                        <div className={styles.project}>
-                                            Project 2
-                                        </div>
-                                    </div>
-                                )
-                                : null
-                            }
+                            onLeave={this._handleWaypointLeave}
+                        >
+                            <div><Projects amountInView={this.state.amountInView} /></div>
                         </Waypoint>
                     </div>
                 </Parallax.Layer>
+
                 <Parallax.Layer
-                    // Page offset, or where the layer will be at when scrolled to
-                    // 0 means start, 1 second page, 1.5 second and half, and so on ...
-                    offset={1.85}
-                    // Parallax factor, allows for positive and negative values
-                    // Shifts the layer up or down in accordance to its offset
-                    speed={-0.5}
+                    offset={1.99}
+                    speed={0.2}
                 >
                     <div className={styles.portrait} />
                 </Parallax.Layer>
+
                 <Parallax.Layer
-                    // Page offset, or where the layer will be at when scrolled to
-                    // 0 means start, 1 second page, 1.5 second and half, and so on ...
                     offset={2}
-                    // Parallax factor, allows for positive and negative values
-                    // Shifts the layer up or down in accordance to its offset
                     speed={0.5}
                     className={styles.layer}
                 >

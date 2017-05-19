@@ -11,6 +11,7 @@ body {
   background-size: contain;
   width: 75vw;
   height: 50vh;
+  margin: 0 auto;
 }
 
 .layer {
@@ -72,19 +73,36 @@ body {
 .projectPane {
   display: flex;
   height: 100vh;
-  .left, .right {
-    width: 50vw;
-    padding: 5vw;
-    display: flex;
-    align-items: center;
+  .right {
+    flex: 1;
   }
   .left {
+    display: flex;
+    width: 40vw;
+    padding: 5vw;
+    align-items: center;
     background: white;
     justify-content: flex-end;
+    h3 {
+      font-size: 4em;
+      font-weight: 100;
+      color: #9a9a9a;
+    }
   }
   .project {
     background: rgba(255,255,255,0.5);
     padding: 2em;
     margin: 2em 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .projectPane {
+    .left {
+      width: 25vw;
+      h3 {
+        font-size: 3em;
+      }
+    }
   }
 }
