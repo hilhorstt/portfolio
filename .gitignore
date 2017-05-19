@@ -1,4 +1,3 @@
-node_modules/
-.sass-cache/
-dest/
-*.css
+dist
+node_modules
+.idea
