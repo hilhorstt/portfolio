@@ -10,17 +10,17 @@ const projectData = [
         id: '001',
     }, {
         title: 'Scrum Master, Front-end Developer - Cognizant Technology Services (full time)',
-        description: 'Seconded to the largest financial services provider in the Netherlands, I have been part of several scrum teams creating features, portlets and the responsive redesign of the corporate website. All projects required close collaboration with the scrum team, visual and UX designers, business analysts and content managers. Currently I am the scrum master for a team which develops apps/features for the bank\'s redesigned, cutting-edge framework.',
+        description: 'Developing features, portlets and the responsive redesign of a corporate banking website. As a scrum master, I worked closely with UX designers, business analysts and content managers. The latest project was an AngularJS chat application.',
         date: '09/2013 - 11/2015',
         id: '002',
     }, {
         title: 'Team Leader PR, Communications and Acquisitions - TU Delft ReVolt House (fulltime)',
-        description: 'A project which involved the design and build of a fully functional solar powered home for the prestigious student competition Solar Decathlon Europe 2012. For this TU Delft dream team I was in charge of PR, communications and sponsorship, which involved many negotiations with university, research institutions, government and (building) companies.',
+        description: 'The design and build of a fully functional solar powered home for the university competition Solar Decathlon Europe 2012. Representing TU Delft, I was responsible for PR, communications and sponsorship.',
         date: '09/2010 - 09/2013',
         id: '003',
     }, {
-        title: 'Junior Webdeveloper / SEO Specialist - QuelMediA (12 hours per week)',
-        description: 'Quel brings suppliers and purchasing organization in contact with eachother that are looking for products or services in Google. QuelMediA specializes in search engine marketing, search engine optimization as well as search engine advertising.',
+        title: 'Junior Web developer / SEO Specialist - QuelMediA (12 hours per week)',
+        description: 'QuelMediA specialized in search engine marketing, search engine optimization as well as search engine advertising. I worked on search engine optimization, and the design and development of landing pages and WordPress websites.',
         date: '09/2010 - 09/2013',
         id: '004',
     },
@@ -38,7 +38,7 @@ const ProjectItem = React.createClass({
                     <div className="title"><h4>{project.title}</h4></div>
                     <div className="date">{project.date}</div>
                 </div>
-                <div className="body"><p>{project.description}</p></div>
+                <div className="body">{project.description}</div>
             </div>
         );
     },
