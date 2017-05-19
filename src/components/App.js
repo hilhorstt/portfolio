@@ -10,7 +10,15 @@ const App = React.createClass({
     getInitialState() {
         return {
             amountInView: 0,
+            menuVisible: false,
         };
+    },
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                menuVisible: true,
+            });
+        }, 6500);
     },
     _handleWaypointEnter() {
         const amountOfProjects = 4;
@@ -32,8 +40,22 @@ const App = React.createClass({
         const cursorOptions = {
             show: false,
         };
-        return (
-            <Parallax pages={3}>
+        return (<div>
+            <div className={`${styles.fixedMenu} ${this.state.menuVisible ? 'visible' : ''}`}>
+                <ul>
+                    <li>
+                        <a href="javascript:void(0)" onClick={() => this.parallax.scrollTo(1)}>
+                            <span>Projects</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" onClick={() => this.parallax.scrollTo(2)}>
+                            <span>About me</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <Parallax ref={(element) => { this.parallax = element; }} pages={3}>
                 <Parallax.Layer offset={0} speed={1} className={styles.front} />
                 <Parallax.Layer offset={1} speed={1} className={styles.endorsement} />
                 <Parallax.Layer offset={2} speed={1} className={styles.contact} />
@@ -103,7 +125,7 @@ const App = React.createClass({
                     <AboutMe />
                 </Parallax.Layer>
             </Parallax>
-        );
+        </div>);
     },
 });
 
