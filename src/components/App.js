@@ -72,7 +72,7 @@ const App = React.createClass({
                                 startDelay={1000}
                                 cursor={cursorOptions}
                             >
-                                Hi, I'm Tim!
+                                Hi, I'm Tim
                             </Typist>
                         </div>
                         <div>

@@ -1,0 +1,7 @@
+#Force www:
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^timhilhorst.nl [NC]
+RewriteRule ^(.*)$ http://www.timhilhorst.nl/$1 [L,R=301,NC]
+
+AddType image/svg+xml svg svgz
+AddEncoding gzip svgz
