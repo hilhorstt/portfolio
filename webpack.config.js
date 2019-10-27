@@ -1,12 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const ROOT_PATH = path.resolve(__dirname);
 
 module.exports = {
-    devtool: 'source-map',
+    mode: 'development',
+    devtool: 'inline-source-map',
     entry: [
         'babel-polyfill',
         'webpack-dev-server/client?http://localhost:8080',
@@ -14,14 +15,17 @@ module.exports = {
         path.resolve(ROOT_PATH, 'src/index'),
     ],
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        pathinfo: false,
     },
     devServer: {
         hot: true,
-        inline: true,
         contentBase: path.resolve(__dirname, 'dist'),
         port: 8080,
+        compress: true,
+        host: '0.0.0.0',
+        disableHostCheck: true,
+        historyApiFallback: true,
+        watchOptions: { aggregateTimeout: 300, poll: 1000 },
     },
     module: {
         rules: [
@@ -41,22 +45,21 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                modules: true,
-                                importLoaders: 1,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
                                 localIdentName: '[name]__[local]___[hash:base64:5]',
-                                sourceMap: true,
                             },
+                            importLoaders: 1,
+                            sourceMap: true,
                         },
-                        { loader: 'postcss-loader' },
-                        { loader: 'sass-loader' },
-                    ],
-                }),
+                    },
+                    { loader: 'postcss-loader' },
+                    { loader: 'sass-loader' },
+                ],
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
@@ -80,7 +83,7 @@ module.exports = {
             inject: 'body', // Inject all scripts into the body
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin({
+        new MiniCssExtractPlugin({
             filename: 'portfolio.css',
             allChunks: true,
         }),
