@@ -15,11 +15,11 @@ body {
   50% {
     opacity: 1;
     transform: translate(0, 5px);
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,1);
   }
   to {
     transform: translate(0, 0);
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.75);
   }
 }
 
@@ -27,7 +27,7 @@ body {
   position: fixed;
   z-index: 1000;
   width: 100%;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,.75);
   opacity: 0;
   &:global(.visible) {
     opacity: 1;
@@ -121,6 +121,7 @@ body {
   background: -webkit-linear-gradient(45deg,  #ffaa53 0%,#ffcbca 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(45deg,  #ffaa53 0%,#ffcbca 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaa53', endColorstr='#ffcbca',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  height: auto !important;
 }
 
 .portrait {
@@ -153,7 +154,7 @@ body {
   display: flex;
   height: 100vh;
   .right {
-    flex: 1;
+    width: 50vw;
   }
   .left {
     display: flex;
@@ -175,13 +176,22 @@ body {
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
+  .portrait {
+    display: none;
+  }
   .projectPane {
+    flex-direction: column;
+    height: auto !important;
     .left {
-      width: 25vw;
+      width: 90vw;
+
       h3 {
-        font-size: 3em;
+        font-size: 2em;
       }
+    }
+    .right {
+      width: 100vw;
     }
   }
 }
