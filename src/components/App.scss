@@ -29,6 +29,8 @@ body {
   width: 100%;
   background: rgba(255,255,255,.75);
   opacity: 0;
+  display: flex;
+  justify-content: space-between;
   &:global(.visible) {
     opacity: 1;
     animation: menu-animate 1s normal;
@@ -58,7 +60,7 @@ body {
           transition: transform .15s ease-in 0s;
         }
         &:after {
-          background: rgba(255,255,255,0.6);
+          background: rgba(255, 120, 56, 0.58);
           transition: background 0.2s linear 0.4s;
         }
       }
@@ -72,6 +74,19 @@ body {
         background: rgba(255,255,255,0);
         transition: background .2s ease-in 0s;
       }
+    }
+  }
+}
+
+.languagePicker {
+  button {
+    background: none;
+    border: 0;
+    height: 100%;
+    font-size: 1em;
+    color: #7d7d7d;
+    &:global(.active) {
+      font-weight: bold;
     }
   }
 }
@@ -113,6 +128,15 @@ body {
 
 .welcome, .title {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+@media screen and (max-width: 768px) {
+  .welcome {
+    font-size: 3em;
+  }
+  .title {
+    font-size: 1.5em;
+  }
 }
 
 .endorsement {
