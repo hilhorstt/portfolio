@@ -1,31 +1,34 @@
 import React from 'react';
+
+import { withTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 import styles from './AboutMe.scss';
 
 class AboutMe extends React.PureComponent {
+    static propTypes = {
+        t: PropTypes.func.isRequired,
+    };
+
     render() {
+        const { t } = this.props;
         return (
             <div className={styles.aboutMe}>
                 <div className="leftPane">
-                    <h3>About me</h3>
+                    <h3>{t('aboutMe')}</h3>
                     <p>
-                        I aim to combine design and technology from concept to realisation.
-                        As an architecture graduate of the Technical University of Delft,
-                        I wrote my master thesis on modular building systems, sustainable materials
-                        and building transformation, but got &apos;slightly sidetracked&apos;
-                        by web development.
+                        {t('aboutMePara1')}
                     </p>
                     <p>
-                        In parallel to my studies, I often worked on web development projects for
-                        committees, part-time jobs and -just for- fun. I pursued a career in
-                        software engineering combining my design skills and front-end development
-                        experience.
+                        {t('aboutMePara2')}
                     </p>
                     <p>
-                        I enjoy discussing UX concepts, visual designs and
-                        the latest trends on front-end development.
+                        {t('aboutMePara3')}
                     </p>
                     <p>
-                        <span>Find me on </span>
+                        <span>
+                            {t('findMeOn')}
+                            &nbsp;
+                        </span>
                         <a href="https://www.linkedin.com/in/timhilhorst" target="_blank" rel="noopener noreferrer">
                             LinkedIn
                         </a>
@@ -37,4 +40,4 @@ class AboutMe extends React.PureComponent {
     }
 }
 
-export default AboutMe;
+export default withTranslation()(AboutMe);

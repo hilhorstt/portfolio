@@ -2,16 +2,25 @@ import React from 'react';
 import Parallax from 'react-springy-parallax';
 import Typist from 'react-typist';
 import { Waypoint } from 'react-waypoint';
+import { Trans, withTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
+import i18n, { locale } from '../i18n';
 import AboutMe from './aboutme/AboutMe';
 import Projects from './projects/Projects';
 import styles from './App.scss';
 
 class App extends React.Component {
+    static propTypes = {
+        t: PropTypes.func.isRequired,
+    };
+
     constructor(props) {
         super(props);
         this.state = {
             amountInView: 0,
             menuVisible: false,
+            currentLanguage: locale,
+            showTypist: true,
         };
     }
 
@@ -22,6 +31,20 @@ class App extends React.Component {
             });
         }, 6500);
     }
+
+    changeLanguage = (lng) => {
+        localStorage.setItem('locale', lng);
+        i18n.changeLanguage(lng);
+        this.setState({
+            currentLanguage: lng,
+        });
+        this.setState({
+            currentLanguage: lng,
+            showTypist: false,
+        }, () => {
+            this.setState({ showTypist: true });
+        });
+    };
 
     _handleWaypointEnter() {
         const amountOfProjects = 5;
@@ -44,27 +67,68 @@ class App extends React.Component {
         this.setState({ amountInView: 5 });
     }
 
+    renderLangButtons() {
+        const { currentLanguage } = this.state;
+        const languages = [
+            {
+                description: 'Nederlands',
+                langCode: 'nl',
+                title: 'NL',
+            },
+            {
+                description: 'English',
+                langCode: 'en',
+                title: 'EN',
+            },
+            {
+                description: 'Norsk',
+                langCode: 'nb',
+                title: 'NO',
+            },
+        ];
+        return languages.map((lang) => {
+            const isCurrent = currentLanguage === lang.langCode;
+            return (
+                <button
+                    type="button"
+                    onClick={this.changeLanguage.bind(null, lang.langCode)}
+                    aria-label={lang.description}
+                    className={isCurrent ? 'active' : ''}
+                    aria-current={isCurrent}
+                    key={`${lang.langCode}_button`}
+                >
+                    {lang.title}
+                </button>
+            );
+        });
+    }
+
     render() {
-        const { amountInView, menuVisible } = this.state;
+        const { amountInView, menuVisible, showTypist } = this.state;
+        const { t } = this.props;
         const cursorOptions = {
             show: false,
         };
+
         return (
             <div>
-                <div className={`${styles.fixedMenu} ${menuVisible ? 'visible' : ''}`}>
+                <nav className={`${styles.fixedMenu} ${menuVisible ? 'visible' : ''}`}>
                     <ul>
                         <li>
                             <a role="button" href="javascript:void(0)" onClick={() => this.parallax.scrollTo(1)}>
-                                <span>Projects</span>
+                                <span>{t('projects')}</span>
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" onClick={() => this.parallax.scrollTo(2)}>
-                                <span>About me</span>
+                                <span>{t('aboutMe')}</span>
                             </a>
                         </li>
                     </ul>
-                </div>
+                    <div className={styles.languagePicker}>
+                        {this.renderLangButtons()}
+                    </div>
+                </nav>
                 <Parallax ref={(element) => { this.parallax = element; }} pages={3}>
                     <Parallax.Layer offset={0} speed={1} className={styles.front} />
                     <Parallax.Layer offset={1} speed={1} className={styles.endorsement} />
@@ -75,26 +139,32 @@ class App extends React.Component {
                         speed={0.15}
                         className={styles.layer}
                     >
-                        <div>
-                            <div>
-                                <Typist
-                                    className={styles.welcome}
-                                    startDelay={1000}
-                                    cursor={cursorOptions}
-                                >
-                                Hi, I&apos;m Tim
-                                </Typist>
-                            </div>
-                            <div>
-                                <Typist
-                                    className={styles.title}
-                                    startDelay={3000}
-                                    cursor={cursorOptions}
-                                >
-                                I design and build front-end applications.
-                                </Typist>
-                            </div>
-                        </div>
+                        {
+                            showTypist
+                                ? (
+                                    <div>
+                                        <div>
+                                            <Typist
+                                                className={styles.welcome}
+                                                startDelay={1000}
+                                                cursor={cursorOptions}
+                                            >
+                                                {t('splashHeader')}
+                                            </Typist>
+                                        </div>
+                                        <div>
+                                            <Typist
+                                                className={styles.title}
+                                                startDelay={3000}
+                                                cursor={cursorOptions}
+                                            >
+                                                {t('splashSubHeader')}
+                                            </Typist>
+                                        </div>
+                                    </div>
+                                )
+                                : null
+                        }
                     </Parallax.Layer>
                     <Parallax.Layer
                         offset={0.99}
@@ -108,7 +178,7 @@ class App extends React.Component {
                         className={styles.projectPane}
                     >
                         <div className={styles.left}>
-                            <h3>Projects</h3>
+                            <h3><Trans>projects</Trans></h3>
                         </div>
                         <div className={styles.right}>
                             <Waypoint
@@ -140,4 +210,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default withTranslation()(App);
